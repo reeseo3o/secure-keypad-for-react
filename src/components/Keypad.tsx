@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Key from "./Key";
+import "./Keypad.css"; // 추가된 CSS 파일 import
 
 type keyNumbers = number[];
 
@@ -42,19 +43,14 @@ const Keypad: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="keypad-container">
       <input
         type="text"
         value={getMaskedInput()}
         readOnly
-        style={{
-          marginBottom: "10px",
-          padding: "10px",
-          fontSize: "18px",
-          width: "calc(100% - 22px)",
-        }}
+        className="keypad-input"
       />
-      <div style={{ display: "flex", flexWrap: "wrap", width: "180px" }}>
+      <div className="keypad-keys">
         {numbers.map((num) => (
           <Key
             key={num}
@@ -64,8 +60,12 @@ const Keypad: React.FC = () => {
           />
         ))}
       </div>
-      <button onClick={handleConfirm}>확인</button>
-      <button onClick={handleReset}>초기화</button>
+      <button className="keypad-button" onClick={handleConfirm}>
+        확인
+      </button>
+      <button className="keypad-button" onClick={handleReset}>
+        초기화
+      </button>
     </div>
   );
 };
